@@ -1,24 +1,34 @@
-console.log("heyyyybabe");
-
-const siteContent = document.body.innerHTML;
-console.log(siteContent);
-
-let wordList = [ 
-    {
+let wordList = [{
         biasWord: "regime",
-        content: "regime is a word used to describe a government that the united states doesn't approve of. It is used as an alternative to the word government to give a bad connotation to dangerous rogue regimes that are corrupt and authoritarian"
+        content: "do do da da da da dee dum lorem ipsum i dont know latin whoops"
     },
     {
         biasWord: "rogue state",
         content: "bla b;a bla testy test etts tes test"
-    }
+    },
+    {
+        biasWord: "sanction",
+        content: "bla b;a bla testy test etts tes test"
+    },
 ]
 
-function wordSearch(word) {
+function biasFixer() {
+    let siteContent = document.body.innerHTML;
+    for (i = 0; i < wordList.length; i++) {
+        let regex = new RegExp(wordList[i].biasWord, "gi");
+        let res = siteContent.replace(regex, function (x) {
+            return x.toUpperCase();
+        });
+        document.body.innerHTML += res;
 
-
-
+    }
 }
+
+biasFixer();
+
+
+
+
 
 /* 
 1) access inner html of entire webpage 
