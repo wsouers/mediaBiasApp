@@ -13,15 +13,14 @@ let wordList = [{
 ]
 
 function biasFixer() {
-    let siteContent = document.body.innerHTML;
     for (i = 0; i < wordList.length; i++) {
         let regex = new RegExp(wordList[i].biasWord, "gi");
-        let res = siteContent.replace(regex, function (x) {
-            return x.toUpperCase();
+        let res = document.body.innerHTML.replace(regex, function() {
+            return "<div class=\"tooltip\">" + wordList[i].biasWord + "<span class=\"tooltip tooltiptext\">" + wordList[i].content + "</span>" + "</div>" 
         });
-        document.body.innerHTML += res;
-
+        document.body.innerHTML = res;
     }
+    return res;
 }
 
 biasFixer();
